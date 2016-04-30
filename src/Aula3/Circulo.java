@@ -1,0 +1,71 @@
+package Aula3;
+
+public class Circulo extends Figura {
+	private double raio;
+	
+	public double raio(){
+		return raio;
+	}
+
+	public Circulo(double x, double y, double r){
+		super(new Ponto(x,y));
+		this.raio = r;
+	}
+	
+	public Circulo(double r){
+		super(new Ponto(0,0));
+		this.raio = r;
+	}
+	
+	public Circulo(Ponto centro, double r){
+		super(centro);
+		this.raio = r;
+	}
+	
+	public Circulo(Circulo circulo){
+		this(circulo.centro(), circulo.raio());
+	}
+	 
+	 public void dadosCirulo(){
+		 
+		 System.out.println("Área do circulo 1: " + areaCirculo());
+		 System.out.println("Perímetro do circulo 1: " + perimetroCirculo());
+
+		 System.out.println("Área do circulo 2: " + areaCirculo());
+		 System.out.println("Perímetro do circulo 2: " + perimetroCirculo());
+	 }
+		
+		 public double areaCirculo(){
+			 double area;
+			 area = Math.PI*Math.pow(raio(),2);
+			 return area;
+		 }
+		 
+		 public double perimetroCirculo(){
+			 double perimetro;
+			 perimetro = 2*Math.PI*raio();
+			 return perimetro;
+		 }
+		 
+		 public boolean iguais(Circulo c){
+		        if(c.raio==raio())
+		            return true;
+		        return false;
+		 }
+		 
+		 public boolean intersecao(Circulo c){
+		        if (raio() + c.raio>= dist(c))  return true;
+		        return false;
+		    }
+		 
+
+		  public double dist(Circulo c){
+		        return Math.sqrt(Math.pow((centro().x)-(c.centro().x), 2)+Math.pow((centro().y)-(c.centro().y), 2));
+		    }
+	 
+	
+	
+	
+	
+}
+
